@@ -6,10 +6,10 @@ header {
     display: flex;
     align-items: center;
   }
-  
-  .logo {
+  header div {
+    margin-left: 20px;
     width: 140px;
-    height: 50px;
-    background: url('../images/logo.png') no-repeat center;
-    padding-left: 20px;
+    height: 60px;
+    background-image: url(../images/logo.png);
+    background-repeat: no-repeat;
   }
