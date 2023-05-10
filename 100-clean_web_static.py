@@ -1,8 +1,10 @@
 #!/usr/bin/python3
+# A script that creates and transfers an archive to a web server.
+
 import os
 from fabric.api import *
 
-env.hosts = ['100.25.19.204', '54.157.159.85']
+env.hosts = ['54.157.172.8', '100.25.182.1']
 
 
 def do_clean(number=0):
@@ -22,7 +24,6 @@ def do_clean(number=0):
     with lcd("versions"):
         [local("rm ./{}".format(a)) for a in archives]
 
-        
     with cd("/data/web_static/releases"):
         archives = run("ls -tr").split()
         archives = [a for a in archives if "web_static_" in a]
