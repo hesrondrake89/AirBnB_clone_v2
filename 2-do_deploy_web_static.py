@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 """Compress web static package and deploy it to servers"""
 from datetime import datetime
 from os import path
