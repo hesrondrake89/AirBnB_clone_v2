@@ -1,47 +1,54 @@
 #!/usr/bin/python3
-"""Compress web static package and deploy it to servers"""
-from datetime import datetime
-from os import path
+# Fabfile to distribute an archive to a web server.
+import os.path
 from fabric.api import env, put, run
 
-env.hosts = ['54.157.172.8', '100.25.182.1']
-env.user = 'ubuntu'
-env.key_filename = '~/.ssh/id_rsa'
+env.hosts = ['<54.157.172.8>', '100.25.182.1']
+
 
 def do_deploy(archive_path):
-    """Deploy web files to server"""
-    try:
-        if not path.exists(archive_path):
-            return False
+    """
+    Distributes an archive to a web server.
 
-        # Upload archive
-        put(archive_path, '/tmp/')
+    Args:
+        archive_path (str): The path of the archive to distribute.
 
-        # Create target directory
-        timestamp = datetime.now().strftime('%Y%m%d%H%M%S')
-        run('sudo mkdir -p /data/web_static/releases/web_static_{}/'.format(timestamp))
-
-        # Uncompress archive and delete .tgz
-        run('sudo tar -xzf /tmp/{} -C /data/web_static/releases/web_static_{}/'.format(path.basename(archive_path), timestamp))
-
-        # Remove archive
-        run('sudo rm /tmp/{}'.format(path.basename(archive_path)))
-
-        # Move contents into host web_static
-        run('sudo mv /data/web_static/releases/web_static_{}/web_static/* /data/web_static/releases/web_static_{}/'.format(timestamp, timestamp))
-
-        # Remove extraneous web_static directory
-        run('sudo rm -rf /data/web_static/releases/web_static_{}/web_static'.format(timestamp))
-
-        # Delete pre-existing symbolic link
-        run('sudo rm -rf /data/web_static/current')
-
-        # Re-establish symbolic link
-        run('sudo ln -s /data/web_static/releases/web_static_{}/ /data/web_static/current'.format(timestamp))
-
-    except Exception as e:
-        print("Exception: {}".format(str(e)))
+    Returns:
+        If the file doesn't exist at archive_path or an error occurs - False.
+        Otherwise - True.
+    """
+    if not os.path.isfile(archive_path):
         return False
 
-    # Return True on success
+    file = archive_path.split("/")[-1]
+    name = file.split(".")[0]
+
+    if put(archive_path, f"/tmp/{file}").failed:
+        return False
+
+    if run(f"rm -rf /data/web_static/releases/{name}/").failed:
+        return False
+
+    if run(f"mkdir -p /data/web_static/releases/{name}/").failed:
+        return False
+
+    if run(f"tar -xzf /tmp/{file} -C /data/web_static/releases/{name}/").failed:
+        return False
+
+    if run(f"rm /tmp/{file}").failed:
+        return False
+
+    if run(f"mv /data/web_static/releases/{name}/web_static/* "
+           f"/data/web_static/releases/{name}/").failed:
+        return False
+
+    if run(f"rm -rf /data/web_static/releases/{name}/web_static").failed:
+        return False
+
+    if run("rm -rf /data/web_static/current").failed:
+        return False
+
+    if run(f"ln -s /data/web_static/releases/{name}/ /data/web_static/current").failed:
+        return False
+
     return True
