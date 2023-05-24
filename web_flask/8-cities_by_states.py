@@ -3,7 +3,7 @@
 
 The application is configured to listen on IP address 0.0.0.0 and port 5000.
 Routes:
-    /cities_by_states: HTML page with a list of all states and related cities.
+    /cities_by_states: HTML page with list of all states and related cities.
 """
 from models import storage
 from flask import Flask
