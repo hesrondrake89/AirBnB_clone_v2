@@ -2,8 +2,6 @@
 """Initiates a Flask web application.
 
 The application is configured to listen on IP address 0.0.0.0 and port 5000.
-Routes:
-    /cities_by_states: HTML page with list of all states and related cities.
 """
 from models import storage
 from flask import Flask
@@ -14,8 +12,7 @@ app = Flask(__name__)
 
 @app.route("/cities_by_states", strict_slashes=False)
 def cities_by_states():
-    """It showcases an HTML page that exhibits a comprehensive list of states 
-    along with their associated cities.
+    """Displays an HTML page with a list of all states and related cities.
 
     States/cities are sorted by name.
     """
@@ -30,4 +27,4 @@ def teardown(exc):
 
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0")
+    app.run(host="0.0.0.0", port=5000)
