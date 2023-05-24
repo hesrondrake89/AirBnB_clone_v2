@@ -14,7 +14,8 @@ app = Flask(__name__)
 
 @app.route("/cities_by_states", strict_slashes=False)
 def cities_by_states():
-    """It showcases an HTML page that exhibits a comprehensive list of states along with their associated cities.
+    """It showcases an HTML page that exhibits a comprehensive list of states 
+    along with their associated cities.
 
     States/cities are sorted by name.
     """
