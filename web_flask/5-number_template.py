@@ -1,10 +1,10 @@
 #!/usr/bin/python3
-"""Starts a Flask web application.
+"""Initiates a Flask web application.
 
-The application listens on 0.0.0.0, port 5000.
+The application is configured to listen on IP address 0.0.0.0 and port 5000.
 Routes:
-    /: Displays 'Hello HBNB!'.
-    /hbnb: Displays 'HBNB'.
+    /: Displays "Hello HBNB!".
+    /hbnb: Displays "HBNB".
     /c/<text>: Displays 'C' followed by the value of <text>.
     /python/(<text>): Displays 'Python' followed by the value of <text>.
     /number/<n>: Displays 'n is a number' only if <n> is an integer.
@@ -62,4 +62,4 @@ def number_template(n):
 
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0")
+    app.run(host="0.0.0.0", port=5000)
