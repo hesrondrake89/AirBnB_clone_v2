@@ -14,7 +14,7 @@ app = Flask(__name__)
 
 @app.route("/cities_by_states", strict_slashes=False)
 def cities_by_states():
-    """It showcases an HTML page that exhibits a comprehensive list of states along with their associated cities.
+    """Displays an HTML page with a list of all states and related cities.
 
     States/cities are sorted by name.
     """
@@ -24,7 +24,7 @@ def cities_by_states():
 
 @app.teardown_appcontext
 def teardown(exc):
-    """Terminate the existing SQLAlchemy session."""
+    """Remove the current SQLAlchemy session."""
     storage.close()
 
 
