@@ -2,6 +2,8 @@
 """Initiates a Flask web application.
 
 The application is configured to listen on IP address 0.0.0.0 and port 5000.
+Routes:
+    /states_list: HTML page with a list of all State objects in DBStorage.
 """
 from models import storage
 from flask import Flask
