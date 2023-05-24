@@ -1,9 +1,7 @@
 #!/usr/bin/python3
-"""Starts a Flask web application.
+"""Initiates a Flask web application.
 
-The application listens on 0.0.0.0, port 5000.
-Routes:
-    /hbnb_filters: HBnB HTML filters page.
+The application is configured to listen on IP address 0.0.0.0 and port 5000.
 """
 from models import storage
 from flask import Flask
@@ -28,4 +26,4 @@ def teardown(exc):
 
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0")
+    app.run(host="0.0.0.0", port=5000)
