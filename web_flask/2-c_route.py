@@ -1,10 +1,10 @@
 #!/usr/bin/python3
-"""Starts a Flask web application.
+"""Initiates a Flask web application.
 
-The application listens on 0.0.0.0, port 5000.
+The application is configured to listen on IP address 0.0.0.0 and port 5000.
 Routes:
-    /: Displays 'Hello HBNB!'.
-    /hbnb: Displays 'HBNB'.
+    /: Displays "Hello HBNB!".
+    /hbnb: Displays "HBNB".
     /c/<text>: Displays 'C' followed by the value of <text>.
 """
 from flask import Flask
@@ -32,4 +32,4 @@ def c(text):
 
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0")
+    app.run(host="0.0.0.0", port=5000)
