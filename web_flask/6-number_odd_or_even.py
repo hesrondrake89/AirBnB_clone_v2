@@ -5,13 +5,6 @@ The application is configured to listen on IP address 0.0.0.0 and port 5000.
 Routes:
     /: Displays "Hello HBNB!".
     /hbnb: Displays "HBNB".
-    /c/<text>: Displays "C" followd by the value of <text>.
-    /python/(<text>): Displays "Python" followd by the value of <text>.
-    /number/<n>: Displays "n" is a number' only if <n> is an integer.
-    /number_template/<n>: Displays an HTML page only if <n> is an integer.
-        - Displays the value of <n> in the body.
-    /number_odd_or_even/<n>: Displays an HTML page only if <n> is an integer.
-        - States whether <n> is even or odd in the body.
 """
 from flask import Flask
 from flask import render_template
