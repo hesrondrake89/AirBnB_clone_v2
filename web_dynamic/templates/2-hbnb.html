@@ -12,9 +12,7 @@
 
     <link rel="shortcut icon" href="static/images/icon.png?{{ cache_id }}">
 
-    <!-- **********************
-	 CSS styles
-	 ********************** -->
+
 
     <link rel="stylesheet" href="static/styles/4-common.css?{{ cache_id }}">
     <link rel="stylesheet" href="static/styles/3-header.css?{{ cache_id }}">
@@ -26,15 +24,8 @@
     <script src="static/scripts/2-hbnb.js"></script>
   </head>
 
-  <!-- **********************
-       BODY
-       ********************** -->
 
   <body>
-
-    <!-- **********************
-	 HEADER
-	 ********************** -->
 
     <header>
       <div id="api_status"></div>
@@ -42,15 +33,10 @@
     <main>
       <div class="container">
 
-	<!-- **********************
-	     FILTERS
-	     ********************** -->
+
 
 	<section class="filters">
 
-	  <!-- **********************
-	       LOCATIONS
-	       ********************** -->
 
 	  <div class="locations">
 	    <h3>States</h3>
@@ -67,9 +53,6 @@
 	    </ul>
 	  </div>
 
-	  <!-- **********************
-	       AMENITIES
-	       ********************** -->
 
 	  <div class="amenities">
 	    <h3>Amenities</h3>
@@ -81,19 +64,13 @@
 	    </ul>
 	  </div>
 
-	  <!-- **********************
-	       SEARCH BUTTON
-	       ********************** -->
+
 
 	  <button>Search</button>
 	</section>
 
 	<section class="places">
 	  <h1>Places</h1>
-
-	<!-- **********************
-	     BEGIN 1 PLACE
-	     ********************** -->
 
 	  {% for place in places|sort(attribute='name') %}
 
@@ -135,9 +112,6 @@
 	      </div>
 	    </div>
 
-	    <!-- **********************
-		 USER
-		 **********************  -->
 
 	    <div class="user">
 
